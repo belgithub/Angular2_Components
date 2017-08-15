@@ -1,0 +1,13 @@
+<h3>
+  cart-list works!
+</h3>
+
+<p *ngIf="boughtGoods">
+  In your cart you have next items:
+</p>
+<ul>
+  <li *ngFor="let item of boughtGoods">
+      Name: {{item.name}}; quantity: {{item.quantity}}; Price for one item: {{item.price}}
+  </li>
+</ul>
+<button (click)="clearCart()">Clear cart</button>
