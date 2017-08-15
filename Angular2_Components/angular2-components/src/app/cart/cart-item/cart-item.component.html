@@ -1,12 +1,12 @@
 <h3>
   cart-item works!
 </h3>
-<p *ngIf = "lastBoughtGood">
-  Last bought good: {{lastBoughtGood.name}}; quantity : {{lastBoughtGood.quantity}};
-  price for one item: {{lastBoughtGood.price | currency}}
+<p *ngIf = "cartService.getLastItem()">
+  Last bought good: {{cartService.getLastItem().name}}; quantity : {{cartService.getLastItem().quantity}};
+  price for one item: {{cartService.getLastItem().price | currency}}
 </p>
-  <button (click)="addQuantity(lastBoughtGood)">+ quantity</button >
-  <button (click)="removeQuantity(lastBoughtGood)">- quantity</button>
+  <button (click)="cartService.addQuantity()">+ quantity</button >
+  <button (click)="cartService.removeQuantity()">- quantity</button>
 <p>
   <button>Remove last item</button>
 </p>

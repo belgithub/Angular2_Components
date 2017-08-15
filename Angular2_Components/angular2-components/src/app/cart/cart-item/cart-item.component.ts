@@ -9,24 +9,15 @@ import { Cart } from '../cart.model';
   styleUrls: ['./cart-item.component.css']
 })
 export class CartItemComponent implements OnInit {
-  boughtGoods: Array<Cart>;
-  lastBoughtGood: Cart;
+  lastItemfromCart: Cart;
+  cart: Array<Cart>;
 
   constructor(
     public cartService: CartService
   ) { }
 
   ngOnInit() {
-    this.boughtGoods = this.cartService.getCart();
-    this.lastBoughtGood = this.cartService.getLastItem(this.boughtGoods);
+    this.lastItemfromCart = this.cartService.getItem();
+    this.cart = this.cartService.cart;
   }
-   
-  addQuantity(){
-     this.lastBoughtGood.quantity +=  1;
-  }
-  
-  removeQuantity(){
-    (this.lastBoughtGood.quantity >= 1) ?  this.lastBoughtGood.quantity -= 1 : this.lastBoughtGood.quantity=0;
-  }
-
 }

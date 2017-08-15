@@ -7,7 +7,8 @@ export class CartService {
 
 
   constructor() { }
-
+  
+  cart = this.getCart();
 
   getCart(): Array<Cart> {
     return [
@@ -23,8 +24,17 @@ export class CartService {
     return new Cart (1, 'bike', 500, 'SportGoods', true, 'Top level XC bike', 1)
   }
 
-  getLastItem(cart) {
-    return cart[cart.length - 1];
+  getLastItem() {
+    return this.cart[this.cart.length - 1];
+  }
+
+   addQuantity(){
+     this.getLastItem().quantity +=  1;
+  }
+
+   removeQuantity(){
+    (this.getLastItem().quantity >= 1) ? this.getLastItem().quantity -= 1 
+                                       : this.getLastItem().quantity = 0;
   }
 
 }
