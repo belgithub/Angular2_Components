@@ -37,4 +37,24 @@ export class CartService {
                                        : this.getLastItem().quantity = 0;
   }
 
+  clearCart() {
+    this.cart = [];
+  }
+
+  setDefaultCart() {
+    this.cart = this.getCart();
+  }
+
+  removeLastItem(){
+    this.cart.pop();
+  }
+
+  getTotalPrice() {
+    let sum = 0;
+    for (let i of this.cart){
+      sum+= i.price;
+    }
+    return sum;
+  }
+
 }
