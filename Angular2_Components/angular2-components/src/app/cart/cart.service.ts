@@ -52,7 +52,7 @@ export class CartService {
   getTotalPrice() {
     let sum = 0;
     for (let i of this.cart){
-      sum+= i.price;
+      (i.quantity >= 1) ? (sum+= i.price * i.quantity): sum+=0;
     }
     return sum;
   }
