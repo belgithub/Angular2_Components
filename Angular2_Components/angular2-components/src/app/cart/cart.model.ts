@@ -6,10 +6,12 @@ export class Cart {
         public category: string,
         public isAvailable?: boolean,
         public description?: string,
-        public quantity?: number
+        public quantity?: number,
+        public selected?: boolean
     ){
         this.id =  id || null;
         this.isAvailable = isAvailable || false;
         this.quantity = quantity || 1;
+        this.selected = selected || false;
     }
 }

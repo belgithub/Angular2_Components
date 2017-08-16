@@ -6,8 +6,15 @@
   In your cart you have next items:
 </p>
 <ul>
-  <li *ngFor="let item of cartService.cart">
+  <li *ngFor="let item of cartService.cart; let i = index" [attr.data-index]="i">
+    <ul [style.color]= "item.selected ? 'blue' : 'black'"
+        [style.cursor]= "item.selected ? 'pointer' : 'default'"
+        (mouseenter)="cartService.highLight(i)"
+        (mouseleave)="cartService.highLight(i)"
+        
+    >
       Name: {{item.name}}; quantity: {{item.quantity}}; Price for one item: {{item.price}}
+    </ul>
   </li>
 </ul>
 <button (click)="cartService.clearCart()">Clear cart</button>

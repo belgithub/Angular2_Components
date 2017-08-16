@@ -12,6 +12,7 @@ export class CartListComponent implements OnInit {
   
   lastItemfromCart: Cart;
   cart: Array<Cart>;
+  color:string = 'red';
 
   constructor(
     public cartService: CartService
@@ -21,7 +22,10 @@ export class CartListComponent implements OnInit {
     this.lastItemfromCart = this.cartService.getItem();
     this.cart = this.cartService.cart;
   }
-  clearCart (){
-    this.cart = [];
+  
+  hileghted = false;
+  
+  isSpecail(){
+    return this.hileghted;
   }
 }
