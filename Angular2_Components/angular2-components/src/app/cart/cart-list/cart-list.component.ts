@@ -19,13 +19,6 @@ export class CartListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.lastItemfromCart = this.cartService.getItem();
-    this.cart = this.cartService.cart;
-  }
-  
-  hileghted = false;
-  
-  isSpecail(){
-    return this.hileghted;
-  }
+    console.log('cart-list.component - has been initialized')
+   }
 }

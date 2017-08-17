@@ -58,7 +58,13 @@ export class CartService {
   }
   
   highLight(i){
-   this.cart[i].selected  = !this.cart[i].selected;
+   this.cart[i].highlighted  = !this.cart[i].highlighted;
   }
 
+  setSelected(i){
+    this.cart[i].selected = !this.cart[i].selected;
+    for (let a of this.cart ) {
+      (a.selected == true && a != this.cart[i]) && (a.selected = !a.selected);
+    }
+  }
 }

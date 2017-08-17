@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { CartService } from './cart/cart.service';
 
@@ -15,4 +15,14 @@ export class AppComponent {
     constructor(
     public cartService: CartService
   ) { }
+  
+  ngOnInit() {
+    console.log('app.component - has been initialized')
+   }
+
+  display = true;
+
+  toggle(){
+    this.display = ! this.display;  
+  }
 }
