@@ -5,9 +5,10 @@
   </h1>
 </div>
 <h2>Here are some components data: </h2>
-<app-cart-item *ngIf="display"></app-cart-item>
+<app-cart-item #childCart *ngIf="display"></app-cart-item>
 <p>
     <button (click)="toggle()">Destroy/Display cart list component</button>
+    <button (click)="childCart.console()">Console method from child called in parrent</button>
 </p>
 <app-cart-list></app-cart-list>
 <h3>Total cart: {{cartService.getTotalPrice() | currency}}</h3>

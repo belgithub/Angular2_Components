@@ -2,18 +2,21 @@
     <h3>
         cart-item works!
       </h3>
-      <div *ngIf = "cartService.getLastItem()">
-        Last bought item is:
+      <h4>
+        Selected item:
+      </h4>
+      <div *ngIf = "cartService.getSelected()">
+        
         <p>
-          {{cartService.getLastItem().name}}; quantity : {{cartService.getLastItem().quantity}};
-          price for one item: {{cartService.getLastItem().price | currency}};
-          Description: {{cartService.getLastItem().description}}; Selected: {{cartService.getLastItem().selected}}
-        </p>    
+          {{cartService.getSelected().name}}; quantity : {{cartService.getSelected().quantity}};
+          price for one item: {{cartService.getSelected().price | currency}};
+          Description: {{cartService.getSelected().description}}; Selected: {{cartService.getSelected().selected}}
+        </p>  
+          <button (click)="cartService.addQuantity()">+ quantity</button >
+          <button (click)="cartService.removeQuantity()">- quantity</button>
+        <p>
+          <button (click)="cartService.removeSelected()">Remove last item</button>
+        </p>  
       </div>
-        <button (click)="cartService.addQuantity()">+ quantity</button >
-        <button (click)="cartService.removeQuantity()">- quantity</button>
-      <p>
-        <button (click)="cartService.removeLastItem()">Remove last item</button>
-      </p>
 </div>
 

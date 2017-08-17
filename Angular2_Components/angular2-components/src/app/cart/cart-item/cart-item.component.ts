@@ -34,4 +34,8 @@ export class CartItemComponent implements OnInit, OnDestroy {
   toggle(){
     this.display = ! this.display;  
   }
+
+  console() {
+    console.log("!!!");
+  }
 }

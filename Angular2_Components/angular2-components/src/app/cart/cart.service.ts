@@ -28,13 +28,21 @@ export class CartService {
     return this.cart[this.cart.length - 1];
   }
 
+  getSelected(){
+    for (let i of this.cart){
+      if (i.selected) {
+        return i;
+      }
+    }
+  }
+
    addQuantity(){
-     this.getLastItem().quantity +=  1;
+     this.getSelected().quantity +=  1;
   }
 
    removeQuantity(){
-    (this.getLastItem().quantity >= 1) ? this.getLastItem().quantity -= 1 
-                                       : this.getLastItem().quantity = 0;
+    (this.getSelected().quantity >= 1) ? this.getSelected().quantity -= 1 
+                                       : this.getSelected().quantity = 0;
   }
 
   clearCart() {
@@ -47,6 +55,10 @@ export class CartService {
 
   removeLastItem(){
     this.cart.pop();
+  }
+
+  removeSelected(){
+    this.cart = this.cart.filter(function(el) {return  el.selected != true})
   }
 
   getTotalPrice() {
