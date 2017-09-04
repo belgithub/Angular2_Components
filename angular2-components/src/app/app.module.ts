@@ -9,6 +9,7 @@ import { CartModule } from './cart/cart.module';
 import { OrdersModule } from './orders/orders.module';
 
 import { CartService } from './cart/cart.service';
+import { DialogService } from './services/dialog.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './admin/guards/auth.guard';
 
@@ -35,7 +36,8 @@ import { HomeComponent } from './home/home.component';
   providers: [
     CartService,
     AuthGuard,
-    AuthService
+    AuthService,
+    DialogService
   ],
   bootstrap: [AppComponent]
 })

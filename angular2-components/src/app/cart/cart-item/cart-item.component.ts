@@ -15,7 +15,7 @@ export class CartItemComponent implements OnInit, OnDestroy {
 
   @HostBinding('class') class = 'my-class';
   @HostListener('click', ['$event']) clicked(event) {
-    console.log("click on host component > ");
+    console.log('click on host component > ');
     console.log(event.target);
   }
 
@@ -30,9 +30,9 @@ export class CartItemComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     console.log('cart-list.component - has been destroyed');
   }
-  
+
   toggle(){
-    this.display = ! this.display;  
+    this.display = ! this.display;
   }
 
   console() {
