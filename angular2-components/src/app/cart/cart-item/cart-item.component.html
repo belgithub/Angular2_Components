@@ -1,12 +1,12 @@
 <div id="cartItemId">
     <h3>
         cart-item works!
-      </h3>
-      <h4>
-        Selected item:
-      </h4>
+    </h3>
+      
       <div *ngIf = "cartService.getSelected()">
-        
+        <h4>
+          Selected item:
+        </h4>
         <p>
           {{cartService.getSelected().name | uppercase }}; quantity : {{cartService.getSelected().quantity}};
           price for one item: {{cartService.getSelected().price | currency}};

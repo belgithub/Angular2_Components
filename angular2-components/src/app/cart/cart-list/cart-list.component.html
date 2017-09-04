@@ -27,3 +27,10 @@
   <button (click)="cartService.clearCart()">Clear cart</button>
   <button (click)="cartService.setDefaultCart()">Set default cart</button>
 </div>
+<app-cart-item></app-cart-item>
+<div>
+  <h3>Total cart: {{cartService.getTotalPrice() | currency}}</h3>
+  <p>
+    Last update date: {{cartService.getLastUpdateDate() | date:'medium' }}
+  </p>
+</div>

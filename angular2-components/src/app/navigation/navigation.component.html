@@ -1,0 +1,19 @@
+<!-- <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="/" routerLinkActive="active">Home</a>
+      <a class="navbar-brand" routerLink="/list">Cart</a>
+    </div>
+  </div>
+</nav> -->
+
+<ul class="nav navbar-nav">
+  <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/">Home</a></li>
+  <li routerLinkActive="active"><a routerLink="/list">Cart</a></li>
+  <li routerLinkActive="active"><a href="#contact">Contact</a></li>
+  <li routerLinkActive="active"><a href="#about">About</a></li>
+  <li routerLinkActive="active"><a routerLink="/admin">Admin</a></li>
+  <li routerLinkActive="active"><a routerLink="/login">Login</a>
+</li>
+
+</ul>

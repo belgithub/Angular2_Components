@@ -1,4 +1,20 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<app-navigation></app-navigation>
+  
+        <div class="container">
+            <router-outlet
+            (activate)='onActivate($event)'
+            (deactivate)='onDeactivate($event)'>
+        </router-outlet>
+        <!-- Routed views go here -->
+  
+        </div>
+
+
+<!-- The content below is only a placeholder and can be replaced.
+<div>
+  <app-navigation></app-navigation>
+</div>
+
 <div style="text-align:center">
   <h1>
     Welcome to {{title}}!
@@ -17,4 +33,4 @@
     Last update date: {{cartService.getLastUpdateDate() | date:'medium' }}
   </p>
 </div>
-
+ -->

@@ -5,14 +5,23 @@ import {FormsModule} from '@angular/forms';
 import { CartListComponent } from './cart-list/cart-list.component';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { CartRoutingModule } from './cart.routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    CartRoutingModule
   ],
-  declarations: [CartListComponent, CartItemComponent, OrderByPipe],
-  exports: [CartListComponent, CartItemComponent]
+  declarations: [
+    CartListComponent,
+    CartItemComponent,
+    OrderByPipe
+  ],
+  exports: [
+    CartListComponent,
+     CartItemComponent
+    ]
 
 })
 export class CartModule { }

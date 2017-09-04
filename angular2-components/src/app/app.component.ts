@@ -11,6 +11,7 @@ import { CartService } from './cart/cart.service';
 
 export class AppComponent {
   title = 'Angular2 Components Demo';
+  display = true;
 
     constructor(
     public cartService: CartService
@@ -19,10 +20,16 @@ export class AppComponent {
   ngOnInit() {
     console.log('app.component - has been initialized')
    }
+   onActivate($event) {
+    console.log('Activated Component', $event);
+  }
 
-  display = true;
+  onDeactivate($event) {
+    console.log('Deactivated Component', $event);
+  }
 
   toggle(){
-    this.display = ! this.display;  
+    this.display = ! this.display;
+    
   }
 }
