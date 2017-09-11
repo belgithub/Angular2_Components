@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers, RequestOptions  } from '@angular/http';
 import './../../services/rxjs-extensions';
 
 import { Product } from '../models/product.model';
@@ -18,7 +18,7 @@ export class ProductPromiseService {
             .then( response => <Product[]>response.json())
             .catch(this.handleError);
   }
-  
+
   getTask(id: number): Promise<Product> {
     return this.http.get(`${this.tasksUrl}/${id}`)
             .toPromise()
@@ -26,6 +26,19 @@ export class ProductPromiseService {
             .catch( this.handleError );
   }
 
+  updateTask(product: Product): Promise<Product> {
+    const url = `${this.tasksUrl}/${product.id}`,
+        body = JSON.stringify(product),
+        headers = new Headers({'Content-Type': 'application/json'}),
+        options = new RequestOptions();
+
+    options.headers = headers;
+
+    return this.http.put(url, body, options)
+            .toPromise()
+            .then( response => <Product>response.json() )
+            .catch( this.handleError );
+  }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
