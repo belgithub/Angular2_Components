@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, HostBinding, HostListener } from '@angular/core';
 
-import { CartService } from '../cart.service';
+import { CartService } from '../services/cart.service';
 import { Cart } from '../cart.model';
 
 @Component({

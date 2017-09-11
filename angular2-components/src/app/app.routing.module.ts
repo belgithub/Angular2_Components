@@ -6,6 +6,7 @@ import {CartListComponent} from './cart/cart-list/cart-list.component';
 import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
+import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [
   {
@@ -21,8 +22,12 @@ const routes: Routes = [
     component: CartItemComponent
   },
   {
-    path: 'login', 
-    component: LoginComponent 
+    path: 'products',
+    component: ProductsComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '',

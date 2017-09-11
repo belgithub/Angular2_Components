@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { DialogService } from './../../services/dialog.service';
-import { CartService } from '../cart.service';
+import { CartService } from '../services/cart.service';
 import { Cart } from '../cart.model';
 
 @Component({
@@ -38,7 +38,7 @@ export class CartListComponent implements OnInit {
   }
 
   canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.firstUpdateDate === this.cartService.getLastUpdateDate()) {
+    if (this.cartService.getFirstUpdateDate().getTime() === this.cartService.getLastUpdateDate().getTime()) {
       return true;
     }
     return this.dialogService.confirm('Discard changes?');
