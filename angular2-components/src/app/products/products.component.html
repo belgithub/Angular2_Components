@@ -2,3 +2,16 @@
 <p>
   products works!
 </p>
+<p>
+  <b>Please note:</b> you have to run <i><b>json-server --watch db.json</b></i> command under <b>db</b> folder, in order to see the data.
+  <br>Admin will have possibility update products.
+</p>
+<!-- <p>
+  {{ this.productPromiseService.getProducts() }}
+</p> -->
+
+<app-product
+*ngFor='let product of products' 
+[product]="product"
+(onComplete)="completeProduct($event)">
+</app-product>

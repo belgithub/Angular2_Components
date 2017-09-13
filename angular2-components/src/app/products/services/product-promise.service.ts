@@ -6,28 +6,28 @@ import { Product } from '../models/product.model';
 
 @Injectable()
 export class ProductPromiseService {
-  private tasksUrl = 'http://localhost:3000/products';
+  private productsUrl = 'http://localhost:3000/products';
 
   constructor(
     private http: Http
   ) {}
 
-  getTasks(): Promise<Product[]> {
-    return this.http.get(this.tasksUrl)
+  getProducts(): Promise<Product[]> {
+    return this.http.get(this.productsUrl)
             .toPromise()
             .then( response => <Product[]>response.json())
             .catch(this.handleError);
   }
 
-  getTask(id: number): Promise<Product> {
-    return this.http.get(`${this.tasksUrl}/${id}`)
+  getProduct(id: number): Promise<Product> {
+    return this.http.get(`${this.productsUrl}/${id}`)
             .toPromise()
             .then( response => <Product>response.json() )
             .catch( this.handleError );
   }
 
-  updateTask(product: Product): Promise<Product> {
-    const url = `${this.tasksUrl}/${product.id}`,
+  updateProduct(product: Product): Promise<Product> {
+    const url = `${this.productsUrl}/${product.id}`,
         body = JSON.stringify(product),
         headers = new Headers({'Content-Type': 'application/json'}),
         options = new RequestOptions();

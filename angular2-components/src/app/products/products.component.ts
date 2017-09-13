@@ -17,10 +17,10 @@ export class ProductsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.productPromiseService.getTasks()
+    this.productPromiseService.getProducts()
       .then(producs => this.products = producs)
       .catch((err) => console.log(err));
-}
 
-
+      console.log( this.productPromiseService.getProducts());
+  }
 }

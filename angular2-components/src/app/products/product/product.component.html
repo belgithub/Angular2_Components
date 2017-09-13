@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+        <!-- <div class="panel-heading">product</div> -->
+        <div class="panel-body productClass">
+            <ul>
+                <li>Proudct: {{product.name}}</li>
+                <li>Category: {{product.category}}</li>
+                <li>Price: {{product.price | currency}}</li>
+                <li>Descriptions: {{product.description}}</li>
+            </ul>
+            <button class="btn btn-primary btn-sm"
+                (click)="completeproduct($event)">
+                Add to cart
+            </button>
+            <button *ngIf=this.authService.isLoggedIn class="btn btn-warning btn-sm"
+                (click)="editproduct()">
+                Edit
+            </button>
+        </div>
+    </div>

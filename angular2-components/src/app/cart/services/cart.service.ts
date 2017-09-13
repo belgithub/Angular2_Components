@@ -42,8 +42,8 @@ export class CartService {
 
   getKeys(){
     let arr = [];
-    for(let k in this.cart[0]){
-      arr.push(k)
+    for(let i in this.cart[0]){
+      arr.push(i)
       return arr;
     }
   }
