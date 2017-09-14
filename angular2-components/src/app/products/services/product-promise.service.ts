@@ -4,6 +4,8 @@ import './../../services/rxjs-extensions';
 
 import { Product } from '../models/product.model';
 
+// const taskListPromise = Promise.resolve(proudctList);
+
 @Injectable()
 export class ProductPromiseService {
   private productsUrl = 'http://localhost:3000/products';
@@ -39,6 +41,10 @@ export class ProductPromiseService {
             .then( response => <Product>response.json() )
             .catch( this.handleError );
   }
+
+  // addProduct(task: Product): void {
+  //   productList.push(task);
+  // }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);

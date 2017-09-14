@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="pannel-title">
+            Task Form
+        </h4>
+    </div>
+    <div class="panel-body">
+        <form *ngIf="product" (ngSubmit)="saveTask()" id="prouduct-form">
+          <div class="form-group">
+            <label for="action">Action</label>
+            <input type="text"
+                class="form-control"
+                id="product" name="product"
+                placeholder="Product"
+                required
+               ><!--p> [(ngModel)]="prouduct.name"</p-->
+          </div>
+          <div class="form-group">
+            <label for="priority">Priority</label>
+            <input type="number"
+                min="1" max="any"
+                class="form-control"
+                id="price" name="price"
+                placeholder="Price"
+                >
+          </div>
+          <div class="form-group">
+            <label for="category">Category</label>
+            <input type="text"
+                class="form-control"
+                id="category" name="category"
+                placeholder="Category"
+                >
+          </div>
+          <button
+              type="submit"
+              class="btn btn-primary"
+              form="task-form">Save
+          </button>
+          <button
+              type="button"
+              class="btn btn-primary"
+              (click)="goBack()">Back
+          </button>
+        </form>
+    </div>
+</div>
