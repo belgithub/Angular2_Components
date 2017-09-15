@@ -6,10 +6,10 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductComponent } from './product/product.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    component: ProductsComponent
-  },
+  // {
+  //   path: 'home',
+  //   component: ProductsComponent
+  // },
   {
     path: 'add',
     component: ProductFormComponent

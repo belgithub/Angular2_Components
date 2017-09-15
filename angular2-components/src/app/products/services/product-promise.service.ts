@@ -46,6 +46,10 @@ export class ProductPromiseService {
   //   productList.push(task);
   // }
 
+  addP(){
+    console.log('Add new Product has bene click. The functionality doesnt work yet.')
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);

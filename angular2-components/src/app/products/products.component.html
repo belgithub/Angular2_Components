@@ -2,7 +2,7 @@
 <p>
   products works!
 </p>
-<p>
+<p *ngIf="producs  ">
   <b>Please note:</b> you have to run <i><b>json-server --watch db.json</b></i> command under <b>db</b> folder, in order to see the data.
   <br>Admin will have possibility update products.
 </p>
@@ -14,4 +14,7 @@
 *ngFor='let product of products' 
 [product]="product"
 (onComplete)="completeProduct($event)">
-</app-product>
+</app-product><br>
+<div>
+  <button (click)="productPromiseService.addP()">Add new Product</button>
+</div>

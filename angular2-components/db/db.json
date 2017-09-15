@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "bike",
-      "price": 1003,
+      "price": 1001,
       "category": "sport > bike",
       "isAvailable": false,
       "quantity": 1,
@@ -13,10 +13,9 @@
     {
       "id": 2,
       "name": "tire",
-      "price": 40,
+      "price": 4.3,
       "category": "sport > bike > parts",
-      "isAvailable": true,
-      "description": "Tires for 29` xc bike, fast and duraleble",
+      "isAvailable": false,
       "quantity": 1,
       "selected": false,
       "highlighted": false
@@ -24,10 +23,9 @@
     {
       "id": 3,
       "name": "tube",
-      "price": 4,
+      "price": 4.3,
       "category": "sport > bike > parts",
-      "isAvailable": true,
-      "description": "Some good tubes",
+      "isAvailable": false,
       "quantity": 1,
       "selected": false,
       "highlighted": false
