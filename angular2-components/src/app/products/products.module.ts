@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ProductPromiseService } from './services/product-promise.service';
 
@@ -12,7 +13,8 @@ import { ProductRoutingModule } from './product.routing.module';
 @NgModule({
   imports: [
     CommonModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    FormsModule
   ],
   declarations: [ProductsComponent, ProductComponent, ProductFormComponent],
   providers: [ProductPromiseService]

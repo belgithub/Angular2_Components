@@ -1,14 +1,75 @@
 {
-    "products" : [
-        {"id" : 1, "name" : "bike", "price" : 1000, "category" : "sport > bike", "isAvailable" : true, "description" : "MTB xc", "quantity" : 1, "selected" : false, "highlighted" : false },
-        {"id" : 2, "name" : "tire", "price" : 40, "category" : "sport > bike > parts", "isAvailable" : true, "description" : "Tires for 29` xc bike, fast and duraleble", "quantity" : 1, "selected" : false, "highlighted" : false },
-        {"id" : 3, "name" : "tube", "price" : 4, "category" : "sport > bike > parts", "isAvailable" : true, "description" : "Some good tubes", "quantity" : 1, "selected" : false, "highlighted" : false },
-        {"id" : 4, "name" : "helmet", "price" : 74, "category" : "sport > bike > protection", "isAvailable" : true, "description" : "light, strong and aerodynamic", "quantity" : 1, "selected" : false, "highlighted" : false },
-        {"id" : 5, "name" : "gloves", "price" : 5, "category" : "sport > bike > wear", "isAvailable" : true, "description" : "brand new gloves", "quantity" : 1, "selected" : false, "highlighted" : false }
-    ],
-    "users" : [
-        {"id" : 1, "firstName" : "Luma", "lastName" : "Panda"},
-        {"id" : 2, "firstName" : "Dron", "lastName" : "Black"},
-        {"id" : 3, "firstName" : "Djin", "lastName" : "Ivanov"}
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "bike",
+      "price": 1003,
+      "category": "sport > bike",
+      "isAvailable": false,
+      "quantity": 1,
+      "selected": false,
+      "highlighted": false
+    },
+    {
+      "id": 2,
+      "name": "tire",
+      "price": 40,
+      "category": "sport > bike > parts",
+      "isAvailable": true,
+      "description": "Tires for 29` xc bike, fast and duraleble",
+      "quantity": 1,
+      "selected": false,
+      "highlighted": false
+    },
+    {
+      "id": 3,
+      "name": "tube",
+      "price": 4,
+      "category": "sport > bike > parts",
+      "isAvailable": true,
+      "description": "Some good tubes",
+      "quantity": 1,
+      "selected": false,
+      "highlighted": false
+    },
+    {
+      "id": 4,
+      "name": "helmet",
+      "price": 74,
+      "category": "sport > bike > protection",
+      "isAvailable": true,
+      "description": "light, strong and aerodynamic",
+      "quantity": 1,
+      "selected": false,
+      "highlighted": false
+    },
+    {
+      "id": 5,
+      "name": "gloves",
+      "price": 5,
+      "category": "sport > bike > wear",
+      "isAvailable": true,
+      "description": "brand new gloves",
+      "quantity": 1,
+      "selected": false,
+      "highlighted": false
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "firstName": "Luma",
+      "lastName": "Panda"
+    },
+    {
+      "id": 2,
+      "firstName": "Dron",
+      "lastName": "Black"
+    },
+    {
+      "id": 3,
+      "firstName": "Djin",
+      "lastName": "Ivanov"
+    }
+  ]
 }

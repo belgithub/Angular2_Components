@@ -27,7 +27,7 @@ export class ProductFormComponent implements OnInit, OnDestroy  {
     this.route.params
     .switchMap((params: Params) => this.productPromiseService.getProduct(+params['id']))
     .subscribe(
-      task => this.product = Object.assign({}, task),
+      product => this.product = Object.assign({}, product),
       err => console.log(err)
     );
   }
@@ -35,7 +35,7 @@ export class ProductFormComponent implements OnInit, OnDestroy  {
   ngOnDestroy(): void {
   }
 
-  saveTask() {
+  saveProduct() {
     const product = new Product(
       this.product.id,
       this.product.name,
@@ -55,6 +55,6 @@ export class ProductFormComponent implements OnInit, OnDestroy  {
 
 
   goBack(): void {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/products']);
   }
 }

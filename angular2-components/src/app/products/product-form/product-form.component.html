@@ -5,24 +5,24 @@
         </h4>
     </div>
     <div class="panel-body">
-        <form *ngIf="product" (ngSubmit)="saveTask()" id="prouduct-form">
+        <form *ngIf="product" (ngSubmit)="saveProduct()" id="prouduct-form">
           <div class="form-group">
-            <label for="action">Action</label>
+            <label for="Name">Product</label>
             <input type="text"
                 class="form-control"
-                id="product" name="product"
-                placeholder="Product"
+                id="name" name="name"
+                placeholder="name"
                 required
-               ><!--p> [(ngModel)]="prouduct.name"</p-->
+               [(ngModel)]="product.name"> <!--p> [(ngModel)]="prouduct.name"</p-->
           </div>
           <div class="form-group">
-            <label for="priority">Priority</label>
+            <label for="price">Price</label>
             <input type="number"
                 min="1" max="any"
                 class="form-control"
                 id="price" name="price"
                 placeholder="Price"
-                >
+                [(ngModel)]="product.price">
           </div>
           <div class="form-group">
             <label for="category">Category</label>
@@ -30,12 +30,20 @@
                 class="form-control"
                 id="category" name="category"
                 placeholder="Category"
-                >
+                [(ngModel)]="product.category">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text"
+                class="form-control"
+                id="description" name="description"
+                placeholder="description"
+                [(ngModel)]="product.description" >
           </div>
           <button
               type="submit"
               class="btn btn-primary"
-              form="task-form">Save
+              form="prouduct-form">Save
           </button>
           <button
               type="button"
