@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
-import { AdminComponent, AdminDashboardComponent, ManageProductsComponent, ManageUsersComponent } from '.';
+import { AdminComponent, AdminDashboardComponent, ManageProductsComponent, ManageUsersComponent, UserListComponent, UserFormComponent } from '.';
 
 const routes: Routes = [
   {
@@ -14,16 +14,35 @@ const routes: Routes = [
         path: '',
         canActivateChild: [AuthGuard],
         children: [
-          { path: 'users', component: ManageUsersComponent },
-          { path: 'products', component: ManageProductsComponent },
-          { path: '', component: AdminDashboardComponent }
+          { 
+            path: 'users',
+            component: ManageUsersComponent,
+            children: [
+              { 
+                path: 'list',
+                component: UserListComponent
+              },
+              { 
+                path: 'modify',
+                component: UserFormComponent
+              }
+            ]
+          },
+          { 
+            path: 'products',
+             component: ManageProductsComponent 
+          },
+          { 
+            path: '',
+           component: AdminDashboardComponent 
+          }
         ]
       }
     ]
   }
 ];
 
-export let adminRouterComponents = [AdminComponent, AdminDashboardComponent, ManageProductsComponent, ManageUsersComponent];
+export let adminRouterComponents = [AdminComponent, AdminDashboardComponent, ManageProductsComponent, ManageUsersComponent, UserFormComponent];
 
 @NgModule({
   imports: [

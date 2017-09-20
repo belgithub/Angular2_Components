@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductsComponent } from './products.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductComponent } from './product/product.component';
+import { NewProductReactiveFormComponent } from './new-product-reactive-form/new-product-reactive-form.component';
 
 const routes: Routes = [
   // {
@@ -12,7 +13,7 @@ const routes: Routes = [
   // },
   {
     path: 'add',
-    component: ProductFormComponent
+    component: NewProductReactiveFormComponent
   },
   {
     path: 'edit/:id',

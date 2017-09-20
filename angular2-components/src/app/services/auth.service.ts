@@ -5,7 +5,7 @@ import './rxjs-extensions';
 
 @Injectable()
 export class AuthService {
-  isLoggedIn = true;
+  isLoggedIn = false;
 
   // store the URL so we can redirect after logging in
   redirectUrl: string;

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppRoutingModule, appRouterComponents } from './app.routing.module';
@@ -8,6 +8,7 @@ import { AppRoutingModule, appRouterComponents } from './app.routing.module';
 import { AdminModule } from './admin/admin.module';
 import { CartModule } from './cart/cart.module';
 import { OrdersModule } from './orders/orders.module';
+//import { UsersModule } from './users/users.module';
 
 import { CartService } from './cart/services/cart.service';
 import { DialogService } from './services/dialog.service';
@@ -19,6 +20,7 @@ import { ProductsModule } from './products/products.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ContactComponent } from './contact/contact.component';
     ProductsModule,
     OrdersModule,
     AdminModule,
-    AppRoutingModule
+    AppRoutingModule,
+    //UsersModule,
+    RouterModule
   ],
   providers: [
     CartService,

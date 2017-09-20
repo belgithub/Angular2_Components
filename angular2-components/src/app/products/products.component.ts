@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+
+import 'rxjs/add/operator/switchMap';
 
 import { Product } from './models/product.model';
 
@@ -13,7 +16,9 @@ export class ProductsComponent implements OnInit {
   products: Array<Product>;
 
   constructor(
-    private productPromiseService: ProductPromiseService
+    private productPromiseService: ProductPromiseService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -23,4 +28,10 @@ export class ProductsComponent implements OnInit {
 
       console.log( this.productPromiseService.getProducts());
   }
+
+  goNewProductForm(): void {
+    console.log("Add new proudct button clicked.")
+    this.router.navigate(['/products']);
+  }
+  
 }

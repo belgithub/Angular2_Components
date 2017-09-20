@@ -9,6 +9,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 
 import { ProductRoutingModule } from './product.routing.module';
+import { NewProductReactiveFormComponent } from './new-product-reactive-form/new-product-reactive-form.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,7 @@ import { ProductRoutingModule } from './product.routing.module';
     ProductRoutingModule,
     FormsModule
   ],
-  declarations: [ProductsComponent, ProductComponent, ProductFormComponent],
+  declarations: [ProductsComponent, ProductComponent, ProductFormComponent, NewProductReactiveFormComponent],
   providers: [ProductPromiseService]
 })
 export class ProductsModule { }
