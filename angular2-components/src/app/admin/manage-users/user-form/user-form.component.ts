@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -19,6 +19,7 @@ export class UserFormComponent implements OnInit, OnDestroy {
   constructor(
     private usersService: UsersPromiseService,
     private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -62,6 +63,8 @@ export class UserFormComponent implements OnInit, OnDestroy {
     // }
   }
 
-  goBack() {
+  goBack(): void {
+    this.router.navigate(['admin/'])
+    
   }
 }

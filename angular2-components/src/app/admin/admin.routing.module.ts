@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
-import { AdminComponent, AdminDashboardComponent, ManageProductsComponent, ManageUsersComponent, UserListComponent, UserFormComponent } from '.';
+import { AdminComponent, AdminDashboardComponent, ManageProductsComponent,
+         ManageUsersComponent, UserListComponent, UserFormComponent } from '.';
 
 const routes: Routes = [
   {
@@ -42,7 +43,8 @@ const routes: Routes = [
   }
 ];
 
-export let adminRouterComponents = [AdminComponent, AdminDashboardComponent, ManageProductsComponent, ManageUsersComponent, UserFormComponent];
+export let adminRouterComponents = [AdminComponent, AdminDashboardComponent,
+           ManageProductsComponent, ManageUsersComponent, UserFormComponent];
 
 @NgModule({
   imports: [

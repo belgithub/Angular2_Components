@@ -42,6 +42,9 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
     this.setMessage();
   }
-
+  
+  singUp() {
+    this.router.navigate(['/singup']);
+  }
 
 }

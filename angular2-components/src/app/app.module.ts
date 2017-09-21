@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule, appRouterComponents } from './app.routing.module';
 
@@ -20,6 +21,7 @@ import { ProductsModule } from './products/products.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
+import { SignupFormComponent } from './login/singup-form/singup-form.component';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { ContactComponent } from './contact/contact.component';
     NavigationComponent,
     appRouterComponents,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,9 @@ import { ContactComponent } from './contact/contact.component';
     AdminModule,
     AppRoutingModule,
     //UsersModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     CartService,
