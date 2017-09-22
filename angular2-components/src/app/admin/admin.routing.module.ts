@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 
 import { AdminComponent, AdminDashboardComponent, ManageProductsComponent,
-         ManageUsersComponent, UserListComponent, UserFormComponent } from '.';
+         ManageUsersComponent, UserListComponent, UserFormComponent, NewProductReactiveFormComponent } from '.';
 
 const routes: Routes = [
   {
@@ -31,7 +31,13 @@ const routes: Routes = [
           },
           { 
             path: 'products',
-             component: ManageProductsComponent 
+             component: ManageProductsComponent, 
+             children :[
+               {
+                 path: 'addNewProduct',
+                 component: NewProductReactiveFormComponent
+               }
+             ]
           },
           { 
             path: '',
