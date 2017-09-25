@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -13,6 +14,7 @@ import { ProductPromiseService } from '../../../products/services/product-promis
 export class NewProductReactiveFormComponent implements OnInit, OnDestroy {
   product: Product;
   oldProduct: Product;
+  productForm: FormGroup;
   private sub: Subscription;
 
   constructor(
@@ -64,6 +66,6 @@ export class NewProductReactiveFormComponent implements OnInit, OnDestroy {
   }
 
   goBack(): void {
-    this.router.navigate(['admin/'])
+    this.router.navigate(['admin/products'])
   }
 }

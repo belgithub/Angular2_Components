@@ -1,6 +1,6 @@
-import { Component, OnInit,OnDestroy  } from '@angular/core';
+import { Component, OnInit, OnDestroy  } from '@angular/core';
 
-import { UsersPromiseService } from '../services/users-promise.service'
+import { UsersPromiseService } from '../services/users-promise.service';
 
 import { User } from '../models/user';
 

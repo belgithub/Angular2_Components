@@ -1,4 +1,7 @@
-<p>
-  manage-products works!
-</p>
-<button (click)="goNewProductForm()">Add new product</button>
+<h3>
+  Here you can manage new products!
+</h3>
+<div *ngIf="!router.url.includes('addNewProduct')">
+  <button (click)="goNewProductForm()">Add new product</button>
+</div>
+<router-outlet></router-outlet>

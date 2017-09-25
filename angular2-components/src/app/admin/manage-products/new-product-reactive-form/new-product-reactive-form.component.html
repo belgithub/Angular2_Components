@@ -1,39 +1,212 @@
 <h4>New Product component works</h4>
-<!-- <p>
-  user-form works!
-</p>
-<div class="panel panel-default">
-  <div class="panel-heading">
-      <h4 class="pannel-title">
-          User Form
-      </h4>
-  </div>
-  <div class="panel-body">
-      <form *ngIf="user" (ngSubmit)="saveUser()" id="user-form">
-        <div class="form-group">
-          <label for="firstName">First Name</label>
-          <input type="text" 
-              class="form-control" 
-              id="firstName" name="firstName"
-              placeholder="First Name"
-              required
-              [(ngModel)]="user.firstName">
-        </div>
-        <div class="form-group">
-          <label for="lastName">Last Name</label>
-          <input type="text" 
-              class="form-control" 
-              id="lastName" name="lastName"
-              placeholder="Last Name"
-              [(ngModel)]="user.lastName">
-        </div>
-  <button class="btn btn-primary"
-          type="submit">Save
-      </button>
-      <button class="btn btn-primary"
-          type="button"
-          (click)="goBack($event)">Back
-      </button>
-      </form>
-  </div>
-</div> -->
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Sign Up!
+    </div>
+
+    <div class="panel-body">
+        <form class="form-horizontal"
+            novalidate
+            #productForm="ngForm"
+            (ngSubmit)="save(productForm)">
+            <fieldset>
+                <div class="form-group" 
+                        [ngClass]="{'has-error': (nameVar.touched || nameVar.dirty) && !nameVar.valid }">
+                    <label class="col-md-2 control-label"
+                           for="nameId">Product *</label>
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="nameId"
+                               type="text"
+                               placeholder="Product Name (required)"
+                               required
+                               minlength="5" 
+                               [(ngModel)]=product.name
+                               name="name"
+                               #nameVar="ngModel" />
+                        <br>
+                        <span class="help-block" *ngIf="(nameVar.touched || nameVar.dirty) && nameVar.errors">
+                            <span *ngIf="nameVar.errors.required">
+                                Please enter product name.
+                            </span>
+                            <span *ngIf="nameVar.errors.minlength">
+                                The Product name must be longer than 5 characters.
+                            </span>
+                        </span>       
+                    </div>
+                </div>
+                <br>
+                <div class="form-group" 
+                    [ngClass]="{'has-error': (categoryVar.touched || categoryVar.dirty) && !categoryVar.valid }">
+                    <label class="col-md-2 control-label"
+                        for="categoryId">Category *</label>
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="categoryId"
+                               type="text"
+                               placeholder="Category (required)"
+                               required
+                               maxlength="50"[(ngModel)]="product.category"
+                               name="category"
+                               #categoryVar="ngModel" />
+  <span class="help-block" *ngIf="(categoryVar.touched || categoryVar.dirty) && categoryVar.errors">
+                            <span *ngIf="categoryVar.errors.required">
+                                Please enter your last name.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <br>
+                <div class="form-group" 
+                    [ngClass]="{'has-error': (priceVar.touched || priceVar.dirty) && !priceVar.valid }">
+                    <label class="col-md-2 control-label"
+                        for="priceId">Price *</label>
+
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="priceId"
+                               type="number"
+                               placeholder="Price (required)"
+                               required
+                               [(ngModel)]="product.price"
+                               name="price"
+                               #priceVar="ngModel" />
+                        <span class="help-block" *ngIf="(priceVar.touched || priceVar.dirty) && priceVar.errors">
+                            <span *ngIf="priceVar.errors.required">
+                                Please enter your price address.
+                            </span>
+                            <span *ngIf="priceVar.errors.pattern">
+                                Please enter a valid price address.
+                            </span>
+
+                            <!--
+                              This one does not work, because Angular doesn support
+                              buil-in price validator
+                             -->
+                            <span *ngIf="priceVar.errors.price">
+                                Please enter a valid price address.
+                            </span>
+                        </span>
+
+                    </div>
+                </div>
+                <!-- <br>
+                <div class="form-group">
+                    <div class="col-md-offset-1 col-md-8 checkbox" >
+                        <label>
+                            <input id="sendProductsId"
+                                   type="checkbox" 
+                                   [(ngModel)]="price.sendProducts"
+                                   name="sendProducts" >
+                            Send me your products
+                        </label>
+                    </div>
+                </div>
+                <br>
+                <div *ngIf="price.sendProducts">
+                    <div class="form-group" >
+                        <label class="col-md-2 control-label">Address Type</label>
+                        <div class="col-md-8">
+                                <label class="radio-inline">
+                                    <input type="radio" id="addressType1Id" value="home"
+                                                        [(ngModel)]="price.addressType"
+                                                        name="addressType">Home
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" id="addressType1Id" value="work"
+                                                        [(ngModel)]="price.addressType"
+                                                        name="addressType">Work
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" id="addressType1Id" value="other"
+                                                        [(ngModel)]="price.addressType"
+                                                        name="addressType">Other
+                                </label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label"
+                            for="cityId">Country, City, Zip Code</label>
+
+                        <div class="col-md-3">
+                            <select class="form-control"
+                                    id="countryId"[(ngModel)]="price.country"
+                                    name="country">
+                                         <option value="">Select a Country...</option>
+                                         <option *ngFor="let country of countries"
+                                                 value="{{country}}">{{country}}</option>                            
+                            </select>
+                        </div>
+                        <br>
+                         <div class="col-md-3">
+                            <input type="text"
+                                   class="form-control"
+                                   id="cityId"
+                                   placeholder="City"
+                                   [(ngModel)]="price.city"
+                                   name="city">
+                        </div>
+                        <br>
+                        <div class="col-md-2">
+                        <input type="number"
+                                   class="form-control"
+                                   id="zipId"
+                                   placeholder="Zip Code"
+                                   [(ngModel)]="price.zip"
+                                   name="zip">
+                            
+                        </div>
+                    </div>
+                    <br>
+                     <div class="form-group">
+                        <label class="col-md-2 control-label"
+                            for="street1Id">Street Address 1</label>
+                        <div class="col-md-8">
+                            <input type="text"
+                                   class="form-control"
+                                   id="street1Id"
+                                   placeholder="Street address"
+                                   [(ngModel)]="price.street1"
+                                   name="street1">                            
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label"
+                            for="street2Id">Street Address 2</label>
+                        <div class="col-md-8">
+                            <input type="text"
+                                   class="form-control"
+                                   id="street2Id"
+                                   placeholder="Street address (second line)"
+                                   [(ngModel)]="price.street2"
+                                   name="street2">                            
+                        </div>
+                    </div>
+                </div> -->
+                <br> 
+                <div class="form-group">
+                    <div class="col-md-4 col-md-offset-2">
+                        <span>
+                            <button class="btn btn-primary"
+                                    type="submit"
+                                    [disabled]="!productForm.valid">
+                                Save
+                            </button>
+                        </span>
+                        <span>
+                            <button class="btn btn-primary" (click)="goBack()">
+                                back
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<br>Dirty: {{ productForm.dirty }}
+<br>Touched: {{ productForm.touched }}
+<br>Valid: {{ productForm.valid }}
+<br>Value: {{ productForm.value | json }}

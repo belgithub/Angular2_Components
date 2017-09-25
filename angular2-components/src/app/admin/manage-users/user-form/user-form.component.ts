@@ -23,11 +23,11 @@ export class UserFormComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.user = new User(null, '', '');
+    this.user = new User(null, '', '', null, null, '', '');
 
     this.sub = this.route.params.subscribe(params => {
       let id = +params['id'];
-      
+
       // NaN - for new user, id - for edit
       if (id) {
         this.usersService.getUser(id)
@@ -48,7 +48,11 @@ export class UserFormComponent implements OnInit, OnDestroy {
     let user = new User(
       this.user.id,
       this.user.firstName,
-      this.user.lastName
+      this.user.lastName,
+      this.user.addressType,
+      this.user.sendProducts,
+      this.user.country,
+      this.user.city
     );
 
     if (user.id) {
