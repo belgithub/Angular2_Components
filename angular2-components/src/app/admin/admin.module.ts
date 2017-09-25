@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AdminRoutingModule } from './admin.routing.module';
 import { UsersModule } from './manage-users/manage-users.module'
@@ -13,7 +13,8 @@ import { AdminComponent, AdminDashboardComponent, ManageProductsComponent , NewP
     CommonModule,
     AdminRoutingModule,
     UsersModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [AdminDashboardComponent, ManageProductsComponent,  AdminComponent, NewProductReactiveFormComponent]
 })

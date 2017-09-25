@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators  } from '@angular/forms';
 
 import { Subscription } from 'rxjs/Subscription';
 
@@ -20,7 +20,8 @@ export class NewProductReactiveFormComponent implements OnInit, OnDestroy {
   constructor(
     private productsService: ProductPromiseService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -39,30 +40,55 @@ export class NewProductReactiveFormComponent implements OnInit, OnDestroy {
           .catch((err) => console.log(err));
       }
     });
+
+    this.buildForm();
+    // this.createForm();
+    // this.setFormValues();
+    // this.patchFormValues();
+
   }
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
   }
 
-  saveProduct() {
-    let product = new Product(
-      this.product.id,
-      this.product.name,
-      this.product.price,
-      this.product.category
-    );
+  save() {
+    console.log(this.productForm);
+    console.log(`Saved: ${JSON.stringify(this.productForm.value)}`);
+  }
 
-    if (product.id) {
-      this.productsService.updateProduct(product);
-      // if success
-      this.oldProduct = this.product;
-    }
-    // else {
-    //   this.productsService.addProduct(product);
-    //   // if success
-    //   this.oldProduct = this.product;
-    // }
+
+  private buildForm() {
+    this.productForm = this.fb.group({
+      name: ['new Proudct (update me)', [Validators.required, Validators.minLength(3)]],
+      category: ['temp Category (update me)', [Validators.required, Validators.maxLength(25)]],
+      price: [1, [Validators.required, Validators.min(1)]],
+      isAvailable: [true, [Validators.required]]
+    });
+  }
+
+  private createForm() {
+    this.productForm = new FormGroup({
+      name: new FormControl(),
+      category: new FormControl(),
+      price: new FormControl()
+    });
+  }
+
+
+  private setFormValues() {
+    this.productForm.setValue({
+      name: 'laptop',
+      category: 'it',
+      price: '1000',
+    });
+  }
+
+  private patchFormValues() {
+    this.productForm.patchValue({
+      name: 'Bike',
+      category: 'sport'
+    });
   }
 
   goBack(): void {

@@ -1,17 +1,17 @@
 <h4>New Product component works</h4>
 <div class="panel panel-primary">
     <div class="panel-heading">
-        Sign Up!
+        Add new product
     </div>
 
     <div class="panel-body">
         <form class="form-horizontal"
             novalidate
-            #productForm="ngForm"
-            (ngSubmit)="save(productForm)">
+            (ngSubmit)="save()"
+            [formGroup]="productForm">
             <fieldset>
                 <div class="form-group" 
-                        [ngClass]="{'has-error': (nameVar.touched || nameVar.dirty) && !nameVar.valid }">
+                [ngClass]="{'has-error': (productForm.get('name').touched || productForm.get('name').dirty) && !productForm.get('name').valid }">
                     <label class="col-md-2 control-label"
                            for="nameId">Product *</label>
                     <div class="col-md-8">
@@ -19,25 +19,21 @@
                                id="nameId"
                                type="text"
                                placeholder="Product Name (required)"
-                               required
-                               minlength="5" 
-                               [(ngModel)]=product.name
-                               name="name"
-                               #nameVar="ngModel" />
+                               formControlName="name" />
                         <br>
-                        <span class="help-block" *ngIf="(nameVar.touched || nameVar.dirty) && nameVar.errors">
-                            <span *ngIf="nameVar.errors.required">
-                                Please enter product name.
-                            </span>
-                            <span *ngIf="nameVar.errors.minlength">
-                                The Product name must be longer than 5 characters.
-                            </span>
-                        </span>       
+                        <span class="help-block" *ngIf="(productForm.get('name').touched || productForm.get('name').dirty) && productForm.get('name').errors">
+                                <span *ngIf="productForm.get('name').errors.required">
+                                      Please enter your first name.
+                                </span>
+                                <span *ngIf="productForm.get('name').errors.minlength">
+                                      The first name must be longer than 3 characters.
+                                </span>
+                          </span>                                 
                     </div>
                 </div>
                 <br>
                 <div class="form-group" 
-                    [ngClass]="{'has-error': (categoryVar.touched || categoryVar.dirty) && !categoryVar.valid }">
+                [ngClass]="{'has-error': (productForm.get('category').touched || productForm.get('category').dirty) && !productForm.get('category').valid }">
                     <label class="col-md-2 control-label"
                         for="categoryId">Category *</label>
                     <div class="col-md-8">
@@ -45,46 +41,65 @@
                                id="categoryId"
                                type="text"
                                placeholder="Category (required)"
-                               required
-                               maxlength="50"[(ngModel)]="product.category"
-                               name="category"
-                               #categoryVar="ngModel" />
-  <span class="help-block" *ngIf="(categoryVar.touched || categoryVar.dirty) && categoryVar.errors">
-                            <span *ngIf="categoryVar.errors.required">
-                                Please enter your last name.
+                               formControlName="category" />
+                        <br>
+                        <span class="help-block" *ngIf="(productForm.get('category').touched || productForm.get('category').dirty) && productForm.get('category').errors">
+                            <span *ngIf="productForm.get('category').errors.required">
+                                Please enter product's category.
                             </span>
+                            <span *ngIf="(productForm.get('category').errors && productForm.get('category').errors.maxlength)">
+                                    Product name should be less than 25 charracters.
+                                </span>
                         </span>
                     </div>
                 </div>
                 <br>
                 <div class="form-group" 
-                    [ngClass]="{'has-error': (priceVar.touched || priceVar.dirty) && !priceVar.valid }">
+                [ngClass]="{'has-error': (productForm.get('price').touched || productForm.get('price').dirty) && !productForm.get('price').valid }">
                     <label class="col-md-2 control-label"
-                        for="priceId">Price *</label>
+                        for="priceId">Price USD *</label>
 
                     <div class="col-md-8">
                         <input class="form-control"
                                id="priceId"
                                type="number"
                                placeholder="Price (required)"
-                               required
-                               [(ngModel)]="product.price"
-                               name="price"
-                               #priceVar="ngModel" />
-                        <span class="help-block" *ngIf="(priceVar.touched || priceVar.dirty) && priceVar.errors">
-                            <span *ngIf="priceVar.errors.required">
-                                Please enter your price address.
+                               formControlName="price"/>
+                        <br>
+                        <span class="help-block" *ngIf="(productForm.get('price').touched || productForm.get('price').dirty) && productForm.get('price').errors">
+                            <span *ngIf="productForm.get('price').errors.required">
+                                Please enter a valid price.
                             </span>
-                            <span *ngIf="priceVar.errors.pattern">
-                                Please enter a valid price address.
+                            <span *ngIf="productForm.get('price').errors.min">
+                                Price should be greater then 0.
                             </span>
+                        </span>
 
-                            <!--
-                              This one does not work, because Angular doesn support
-                              buil-in price validator
-                             -->
-                            <span *ngIf="priceVar.errors.price">
-                                Please enter a valid price address.
+                    </div>
+                </div>
+                
+                <br>
+                <div class="form-group" 
+                [ngClass]="{'has-error': (productForm.get('isAvailable').touched || productForm.get('isAvailable').dirty) && !productForm.get('isAvailable').valid }">
+                    <label class="col-md-2 control-label"
+                        for="priceId">isAvailable *</label>
+
+                    <div class="col-md-8">
+                        <select class="form-control"
+                                id="isAvailableId"
+                                placeholder="isAvailable (required)"
+                                formControlName="isAvailable">
+                                <option value="true">true</option>
+                                <option value="false">false</option>
+                        </select>
+
+                        <br>
+                        <span class="help-block" *ngIf="(productForm.get('isAvailable').touched || productForm.get('isAvailable').dirty) && productForm.get('isAvailable').errors">
+                            <span *ngIf="productForm.get('isAvailable').errors.required">
+                                Please enter a valid price.
+                            </span>
+                            <span *ngIf="productForm.get('isAvailable').errors.min">
+                                Price should be greater then 0.
                             </span>
                         </span>
 
