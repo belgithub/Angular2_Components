@@ -10,8 +10,38 @@
             (ngSubmit)="save()"
             [formGroup]="productForm">
             <fieldset>
+                <div class="form-group">
+                    <br>  
+                    <label class="col-md-2 control-label">Show disabled fields</label>
+                        <div class="col-md-8">
+                            <label class="radio-online">
+                                <input type="radio"
+                                    value='Yes'
+                                    formControlName="showAll">Yes
+                            </label>
+                            <label class="radio-online">
+                                <input type="radio"
+                                    value='No'
+                                    formControlName="showAll">No
+                            </label>
+                        </div>
+                </div>       
+                 <div *ngIf="productForm.get('showAll').value == 'Yes'" class="form-group" 
+                [ngClass]="{'has-error': (productForm.get('id').touched || productForm.get('id').dirty) && !productForm.get('id').valid }">
+                    <label class="col-md-2 control-label"
+                            for="productId">Product ID</label>
+                    <div class="col-md-8">
+                        <input class="form-control"
+                                id="productId"
+                                type="text"
+                                placeholder="Product Id"
+                                formControlName="id" />
+                        <br>                            
+                    </div>
+                </div>
                 <div class="form-group" 
                 [ngClass]="{'has-error': (productForm.get('name').touched || productForm.get('name').dirty) && !productForm.get('name').valid }">
+                    <br>
                     <label class="col-md-2 control-label"
                            for="nameId">Product *</label>
                     <div class="col-md-8">
@@ -74,16 +104,13 @@
                                 Price should be greater then 0.
                             </span>
                         </span>
-
                     </div>
-                </div>
-                
-                <br>
+                </div>                           
                 <div class="form-group" 
                 [ngClass]="{'has-error': (productForm.get('isAvailable').touched || productForm.get('isAvailable').dirty) && !productForm.get('isAvailable').valid }">
+                    <br>
                     <label class="col-md-2 control-label"
-                        for="priceId">isAvailable *</label>
-
+                        for="priceId">Available ?</label>
                     <div class="col-md-8">
                         <select class="form-control"
                                 id="isAvailableId"
@@ -92,17 +119,59 @@
                                 <option value="true">true</option>
                                 <option value="false">false</option>
                         </select>
-
                         <br>
-                        <span class="help-block" *ngIf="(productForm.get('isAvailable').touched || productForm.get('isAvailable').dirty) && productForm.get('isAvailable').errors">
-                            <span *ngIf="productForm.get('isAvailable').errors.required">
-                                Please enter a valid price.
+                    </div>
+                </div>               
+                <div class="form-group" 
+                [ngClass]="{'has-error': (productForm.get('quantity').touched || productForm.get('quantity').dirty) && !productForm.get('price').valid }">
+                <br>
+                    <label class="col-md-2 control-label"
+                        for="priceId">Items availible in stock*</label>
+
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="priceId"
+                               type="number"
+                               placeholder="Quantity"
+                               formControlName="quantity"/>
+                        <br>
+                        <span class="help-block" *ngIf="(productForm.get('quantity').touched || productForm.get('quantity').dirty) && productForm.get('quantity').errors">
+                            <span *ngIf="productForm.get('quantity').errors.required">
+                                Please enter a valid count.
                             </span>
-                            <span *ngIf="productForm.get('isAvailable').errors.min">
-                                Price should be greater then 0.
+                            <span *ngIf="productForm.get('quantity').errors.min">
+                                    count should be greater then 0.
                             </span>
                         </span>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="productForm.get('showAll').value == 'Yes'" 
+                [ngClass]="{'has-error': (productForm.get('selected').touched || productForm.get('selected').dirty) && !productForm.get('selected').valid }">
+                    <br>
+                    <label class="col-md-2 control-label"
+                        for="priceId">Selected ?</label>
 
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="selectedId"
+                               type="boolen"
+                               placeholder="selected"
+                               formControlName="selected"/>
+                        <br>
+                    </div>
+                </div>
+                <br>
+                <div  *ngIf="productForm.get('showAll').value == 'Yes'" class="form-group" 
+                [ngClass]="{'has-error': (productForm.get('highlighted').touched || productForm.get('highlighted').dirty) && !productForm.get('highlighted').valid }">
+                    <label class="col-md-2 control-label"
+                        for="highlightedId">highlighted ?</label>
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="highlightedId"
+                               type="boolen"
+                               placeholder="highlighted"
+                               formControlName="highlighted"/>
+                        <br>
                     </div>
                 </div>
                 <!-- <br>

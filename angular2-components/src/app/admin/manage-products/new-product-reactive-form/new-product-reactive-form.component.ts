@@ -57,13 +57,22 @@ export class NewProductReactiveFormComponent implements OnInit, OnDestroy {
     console.log(`Saved: ${JSON.stringify(this.productForm.value)}`);
   }
 
+  returnShowAll () {
+    return (this.productForm.get('showAll').toString() == 'No') ? false : true;
+  }
+
 
   private buildForm() {
     this.productForm = this.fb.group({
-      name: ['new Proudct (update me)', [Validators.required, Validators.minLength(3)]],
-      category: ['temp Category (update me)', [Validators.required, Validators.maxLength(25)]],
+      id: [{value: 'Autoincrement', disabled: true}, [Validators.required]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      category: ['', [Validators.required, Validators.maxLength(25)]],
       price: [1, [Validators.required, Validators.min(1)]],
-      isAvailable: [true, [Validators.required]]
+      isAvailable: [true, [Validators.required]],
+      quantity: [1, [Validators.min(1)]],
+      selected: [{value: false, disabled: true}, [Validators.required]],
+      highlighted: [{value: false, disabled: true}, [Validators.required]],
+      showAll: 'No'
     });
   }
 
