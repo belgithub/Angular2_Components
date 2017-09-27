@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Product } from '../../../products/models/product.model';
 import { ProductPromiseService } from '../../../products/services/product-promise.service';
+import { CustomValidators } from './../validators';
+
 
 @Component({
   templateUrl: 'new-product-reactive-form.component.html',
@@ -57,23 +59,38 @@ export class NewProductReactiveFormComponent implements OnInit, OnDestroy {
     console.log(`Saved: ${JSON.stringify(this.productForm.value)}`);
   }
 
-  returnShowAll () {
-    return (this.productForm.get('showAll').toString() == 'No') ? false : true;
-  }
-
 
   private buildForm() {
     this.productForm = this.fb.group({
       id: [{value: 'Autoincrement', disabled: true}, [Validators.required]],
       name: ['', [Validators.required, Validators.minLength(3)]],
       category: ['', [Validators.required, Validators.maxLength(25)]],
-      price: [1, [Validators.required, Validators.min(1)]],
+      price: [1, [Validators.required, CustomValidators.price]],
       isAvailable: [true, [Validators.required]],
       quantity: [1, [Validators.min(1)]],
       selected: [{value: false, disabled: true}, [Validators.required]],
       highlighted: [{value: false, disabled: true}, [Validators.required]],
-      showAll: 'No'
+      showAll: 'false'
     });
+  }
+
+  allowQuantity() {
+    const quantityFormControl = this.productForm.get('quantity');
+    console.log( 'allowQuantity function called' );
+    // if (this.productForm.get('isAvailable').value == 'Yes')
+    console.log(this.productForm.get('isAvailable').value);
+    if (this.productForm.get('isAvailable').value === 'true') {
+      quantityFormControl.clearValidators();
+      quantityFormControl.enable();
+      quantityFormControl.patchValue(1);
+      quantityFormControl.setValidators([Validators.required, Validators.min(1)]);
+    } else {
+      quantityFormControl.clearValidators();
+      quantityFormControl.setValue(0);
+      quantityFormControl.disable();
+
+    }
+    quantityFormControl.updateValueAndValidity();
   }
 
   private createForm() {
