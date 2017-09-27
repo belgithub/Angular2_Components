@@ -65,7 +65,7 @@ export class NewProductReactiveFormComponent implements OnInit, OnDestroy {
       id: [{value: 'Autoincrement', disabled: true}, [Validators.required]],
       name: ['', [Validators.required, Validators.minLength(3)]],
       category: ['', [Validators.required, Validators.maxLength(25)]],
-      price: [1, [Validators.required, CustomValidators.price]],
+      price: [1, [Validators.required, CustomValidators.priceRange(1, 10000)]],
       isAvailable: [true, [Validators.required]],
       quantity: [1, [Validators.min(1)]],
       selected: [{value: false, disabled: true}, [Validators.required]],

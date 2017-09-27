@@ -100,7 +100,7 @@
                             <span *ngIf="productForm.get('price').errors.required">
                                 Please enter a valid price.
                             </span>
-                            <span *ngIf="productForm.get('price').errors.price">
+                            <span *ngIf="productForm.get('price').errors.priceRange">
                                 Price should be 1-10000.
                             </span>
                         </span>
